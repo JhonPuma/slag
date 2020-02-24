@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Genetaror</title>
+    <link rel='stylesheet' href='./node_modules/codemirror/lib/codemirror.css'>
+
+    <link rel='stylesheet' href='./themes/blackboard-black.css'>
+    <link rel='stylesheet' href='./themes/blackboard.css'>
+
+    <script src='./node_modules/codemirror/lib/codemirror.js'></script>
+    <script src='./node_modules/codemirror/mode/javascript/javascript.js'></script>
+    <script src='./node_modules/codemirror/addon/selection/active-line.js'></script>
+    <script src='./node_modules/codemirror/addon/edit/matchbrackets.js'></script>
+
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap_ibm.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+        }
+
+        .CodeMirror {
+            height: calc(100vh - 50px);
+        }
+
+        .input-none {
+            width: 15px;
+            opacity: 0;
+            height: 0;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fill">
+        <div class="d-flex p-3">
+            <div class="col-10">
+                <textarea id="copea" cols="79" style="max-width: 100%;max-height: 100%" rows="4"
+                    placeholder="Copiar elementos aquí"></textarea>
+                <button type="button" class="btn btn-primary" onclick="obtener()">Generar</button>
+                <button type="menu" class="btn btn-danger" onclick="clearTextArea()">Limpiar</button>
+                <div id="elementos" class="col-31 ml-2">
+                    <div class="input-group mb-3 d-none">
+                        <input type="text" class="form-control" aria-label="Recipient's username"
+                            aria-describedby="basic-addon2" readonly style="    margin-right: -15px;">
+                        <input type="text" class="input-none">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Copiar</button>
+                        </div>
+                    </div>
+
+                    <span id="currentElement"></span>
+                </div>
+            </div>
+            <div class="col-20 offset-1">
+                <form>
+                    <textarea id='code' name='code' class="h-100">
+                        <amp-lightbox id="modal-welcome3" layout="nodisplay" class="dialog-amp">
+                            <div class="i-amphtml-fill-content bg-top">
+                                <div class="position-absolute close-dialog ">
+                                    <i class="white" onclick="closeModalPlan('modal-welcome3')"></i>
+                                </div>
+                                <div class="text-center welcome ">
+                                    <img src="IMG.foto.Logo" alt="">
+                                    <h1 class="text-dark">¡Cecilia, bienvenida a Claro Club!</h1>
+                                    <p class="text-black">Te hemos enviado un correo de confirmación. Ahora podrás disfrutar de los
+                                        mejores benefecios y descuentos. </p>
+                                    <button class="bg-red text-white">
+                                        ewrwgtwer
+                                    </button>
+                                </div>
+                            </div>
+                        </amp-lightbox>
+                    </textarea>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var editor = CodeMirror.fromTextArea(document.getElementById('code'), {
+            lineNumbers: true,
+            styleActiveLine: true,
+            matchBrackets: true
+        });
+        editor.setOption('theme', 'blackboard');
+        $('span.cm-string').on('click', function (e) {
+            slagGenerator(e)
+        })
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>
